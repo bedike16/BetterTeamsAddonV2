@@ -1,0 +1,10 @@
+name: BetterTeamsAddon
+version: '1.1.4'
+depend: [BetterTeams, PlaceholderAPI]
+author: koba1
+main: hu.bedike16.betterteamsaddon.Main
+# api-version: '1.12'
+
+commands:
+  betterteamsaddon:
+    aliases: [ bta, teamsaddon ]

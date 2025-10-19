@@ -1,0 +1,34 @@
+# hu - Hungarian
+# en - English
+
+language: "en"
+
+kdr_round: 2
+
+placeholders:
+  prefix: "betterteamsaddon"
+  player:
+    kills:
+      value: "{value}"
+      none: "&f-"
+    deaths:
+      value: "{value}"
+      none: "&f-"
+    damages:
+      value: "{value}"
+      none: "&f-"
+    kdr:
+      value: "{value}"
+      none: "&-"
+  leaderboard:
+    kills:
+      name: "{name}"
+      value: "{value}"
+    deaths:
+      name: "{name}"
+      value: "{value}"
+    damages:
+      name: "{name}"
+      value: "{value}"
+  general:
+    no_team: "&7-"
