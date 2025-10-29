@@ -24,13 +24,15 @@ public class MessageBuilder {
         this.messages = messages;
     }
 
-    public void replace(String target, String replacement) {
-        if(this.message != null) {
+    public MessageBuilder replace(String target, String replacement) {
+        if (this.message != null) {
             this.message = this.message.replace(target, replacement);
-            return;
+        } else {
+            this.messages = replaceList(target, replacement);
         }
-        this.messages = replaceList(target, replacement);
+        return this;
     }
+
 
     private List<String> replaceList(String target, String replacement) {
         List<String> str = new ArrayList<>();

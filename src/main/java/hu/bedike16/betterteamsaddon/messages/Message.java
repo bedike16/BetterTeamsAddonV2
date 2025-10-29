@@ -59,6 +59,9 @@ public class Message {
     public static final Message TEAM_DEATH = new Message("teams.death",
             "%prefix%<red>%player%</red> <gray>died.</gray>");
 
+    public static final Message UPDATE_AVAILABLE = new Message("update.available",
+            "%prefix%<green>A new version of BetterTeamsAddon is available:</green> <yellow>%version%</yellow> <gray>Download here:</gray> <click:open_url:'https://www.spigotmc.org/resources/betterteamsaddon.119246/'><blue>Click here!</blue></click>");
+
 
     private final String key;
     private String message;

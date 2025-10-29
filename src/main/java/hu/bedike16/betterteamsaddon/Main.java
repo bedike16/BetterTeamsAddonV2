@@ -1,6 +1,7 @@
 package hu.bedike16.betterteamsaddon;
 
 import com.booksaw.betterTeams.Team;
+import hu.bedike16.betterteamsaddon.utils.UpdateChecker;
 import lombok.Getter;
 import lombok.NonNull;
 import hu.bedike16.betterteamsaddon.commands.commands.BetterTeamsAddonCommand;
@@ -16,6 +17,7 @@ import hu.bedike16.betterteamsaddon.objects.TeamHolder;
 import hu.bedike16.betterteamsaddon.placeholders.BetterTeamsPlaceholders;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,13 +30,13 @@ import java.util.UUID;
 @Getter
 public final class Main extends JavaPlugin {
 
-    private static final String SPIGOT_RESOURCE_ID = "119246";
     @Getter private static Main instance;
     private Map<UUID, ITeamHolder> teams;
     private BetterTeamsPlaceholders placeholders;
     private BukkitAudiences adventure;
     private ConfigData configData;
     private TeamData teamData;
+    @Getter private String latestVersion;
 
     public static Main getInstance() {
         return instance;
@@ -53,6 +55,18 @@ public final class Main extends JavaPlugin {
         // Plugin startup logic
         instance = this;
         this.teams = new HashMap<>();
+
+        new UpdateChecker(this, 119246).getVersion(version -> {
+            this.latestVersion = version;
+            if (this.getDescription().getVersion().equals(version)) {
+                getLogger().info("No new version available.");
+            } else {
+                getLogger().info("There is a new update available. Download it here: https://www.spigotmc.org/resources/betterteamsaddon.119246/");
+            }
+        });
+
+        int pluginId = 23207;
+        Metrics metrics = new Metrics(this, pluginId);
 
         if(!new File(getDataFolder(), "config.yml").exists())
             saveResource("config.yml", false);
@@ -97,6 +111,11 @@ public final class Main extends JavaPlugin {
             if(t == null) continue;
             new TeamHolder(t);
         }
+        System.out.println(" ___      _   _          _____                    _      _    _          ");
+        System.out.println("| _ ) ___| |_| |_ ___ _ |_   _|__ __ _ _ __  ___ /_\\  __| |__| |___ _ _  ");
+        System.out.println("| _ \\/ -_)  _|  _/ -_) '_|| |/ -_) _` | '  \\(_-</ _ \\/ _` / _` / _ \\ ' \\");
+        System.out.println("|___/\\___|\\__|\\__\\___|_|  |_|\\___\\__,_|_|_|_/__/_/ \\_\\__,_\\__,_\\___/_||_|");
+        System.out.println("BetterTeamsAddon V2 by bedike16");
     }
 
     public @NonNull BukkitAudiences adventure() {

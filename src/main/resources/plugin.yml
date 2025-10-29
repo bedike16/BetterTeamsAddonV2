@@ -1,10 +1,13 @@
 name: BetterTeamsAddon
-version: '1.1.4'
+version: '1.2.0'
 depend: [BetterTeams, PlaceholderAPI]
-author: koba1
+author: bedike16
 main: hu.bedike16.betterteamsaddon.Main
-# api-version: '1.12'
+website: http://donate.bedike16.hu/
+api-version: '1.12'
 
 commands:
   betterteamsaddon:
     aliases: [ bta, teamsaddon ]
+  teamleaderboard:
+    aliases: [ teamboard, tleaderboard ]

@@ -1,9 +1,6 @@
-# hu - Hungarian
-# en - English
-
-language: "en"
-
 kdr_round: 2
+
+op-update-alert: true
 
 placeholders:
   prefix: "betterteamsaddon"

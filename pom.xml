@@ -6,7 +6,7 @@
 
     <groupId>hu.bedike16</groupId>
     <artifactId>betterteamsaddon</artifactId>
-    <version>1.0</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
 
     <name>BetterTeamsAddon</name>
@@ -30,6 +30,7 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -40,10 +41,19 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.bstats</pattern>
+                                    <shadedPattern>hu.bedike16.betterteamsaddon.bstats</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -51,6 +61,7 @@
             </resource>
         </resources>
     </build>
+
 
     <repositories>
         <repository>
@@ -79,7 +90,7 @@
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
-            <version>3.0.2</version>
+            <version>3.1.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -115,7 +126,7 @@
         <dependency>
             <groupId>com.github.booksaw</groupId>
             <artifactId>BetterTeams</artifactId>
-            <version>4.10.0</version>
+            <version>4.15.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
